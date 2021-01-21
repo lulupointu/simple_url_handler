@@ -6,7 +6,7 @@ This package is here for you. You will be able to:
 * Have the forward and backward buttons working out of the box
 * Get a manually entered url to update your app state
 
-![Example](counter_with_simple_url_handling.gif)
+![Example](https://github.com/lulupointu/simple_url_handler/raw/main/counter_with_simple_url_handling.gif)
 
 ## Getting Started
 Add this to your package's pubspec.yaml file:
