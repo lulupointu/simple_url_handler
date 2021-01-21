@@ -10,19 +10,19 @@ This package is here for you. You will be able to:
 
 ## Getting Started
 Add this to your package's pubspec.yaml file:
-```
+```{dart}
 dependencies:
     simple_url_handle: ^0.0.1
 ```
 
 ## Usage
 Import the package with
-```
+```{dart}
 import 'package:simple_url_handler/simple_url_handler.dart';
 ```
 
 To use it, use the `SimpleUrlHandler` class:
-```
+```{dart}
 SimpleUrlHandler(
     urlToAppState: (BuildContext context, RouteInformation routeInformation) {
         // This is called when a user enters a url or presses the forward/backward
