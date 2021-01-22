@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_url_handler/simple_url_handler.dart';
 
@@ -18,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return SimpleUrlHandler(
       debugShowCheckedModeBanner: false,
       urlToAppState: (BuildContext context, RouteInformation routeInformation) {
-        final newCounter = int.tryParse(routeInformation.location.substring(1));
+        final newCounter = int.tryParse(routeInformation.location?.substring(1) ?? '');
         if (newCounter != null && newCounter != count) {
           setState(() {
             count = newCounter;
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // change the url back to the one synced with the state
           SimpleUrlNotifier.of(context).notify();
         }
-        return;
+        return SynchronousFuture(null);
       },
       appStateToUrl: () => RouteInformation(location: '/$count'),
       child: Scaffold(
