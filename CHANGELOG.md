@@ -20,3 +20,7 @@
 ## 0.0.1-nullsafety.4
 
 * Adding links to helpful Medium articles in README
+
+## 0.0.1-nullsafety.5
+
+* Changing folder names examples -> example to allow pub.dev to recognize example app
