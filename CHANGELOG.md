@@ -16,3 +16,7 @@
 ## 0.0.1-nullsafety.3
 
 * Adding a second, more complete, example app
+
+## 0.0.1-nullsafety.4
+
+* Adding links to helpful Medium articles in README
