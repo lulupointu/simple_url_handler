@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class NestedRouterDelegate extends RouterDelegate with ChangeNotifier {
   @override
   Future<bool> popRoute() async {
     print('popRoute NestedRouterDelegate');
-    _nestedRouterDelegateNavigatorKey.currentState.pop();
+    _nestedRouterDelegateNavigatorKey.currentState?.pop();
     return true;
   }
 
@@ -80,5 +81,5 @@ class NestedRouterDelegate extends RouterDelegate with ChangeNotifier {
 
   // We don't use this
   @override
-  Future<void> setNewRoutePath(configuration) => null;
+  Future<void> setNewRoutePath(configuration) => SynchronousFuture(null);
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:move_to_background/move_to_background.dart';
 import 'package:provider/provider.dart';
@@ -68,5 +69,5 @@ class AuthenticationRouterDelegate extends RouterDelegate with ChangeNotifier {
 
   // Navigation state to app state
   @override
-  Future<void> setNewRoutePath(navigationState) => null;
+  Future<void> setNewRoutePath(navigationState) => SynchronousFuture(null);
 }

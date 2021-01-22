@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_url_handler/simple_url_handler.dart';
@@ -6,10 +7,9 @@ import 'app_state.dart';
 import 'authentication_router.dart';
 
 class MyUrlHandler extends StatelessWidget {
-  static int i = 0;
   final BuildContext context;
 
-  const MyUrlHandler({Key key, this.context}) : super(key: key);
+  const MyUrlHandler({Key key, @required this.context}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class MyUrlHandler extends StatelessWidget {
   }
 
   Future<void> urlToAppState(BuildContext context, RouteInformation routeInformation) {
-    final uri = Uri.parse(routeInformation.location);
+    final uri = Uri.parse(routeInformation.location ?? '');
     if (uri.pathSegments.length == 0) {
       SimpleUrlNotifier.of(context).notify();
-      return null;
+      return SynchronousFuture(null);
     }
 
     // If we are authenticated
@@ -54,19 +54,19 @@ class MyUrlHandler extends StatelessWidget {
         // In any case, call notify manually because the AppState might not change
         // but the url has to be updated to a valid one
         SimpleUrlNotifier.of(context).notify();
-        return null;
+        return SynchronousFuture(null);
       } else if (uri.pathSegments[0] == 'profile') {
         // If the user is authenticated and wants to go to the profile, go to profile
         Provider.of<AppState>(context, listen: false).selectedBottomNavigationBarIndex = 0;
-        return null;
+        return SynchronousFuture(null);
       } else if (uri.pathSegments[0] == 'settings') {
         // If the user is authenticated and wants to go to the settings, go to settings
         Provider.of<AppState>(context, listen: false).selectedBottomNavigationBarIndex = 1;
-        return null;
+        return SynchronousFuture(null);
       } else {
         // No valid case was caught, update the url back to a valid one
         SimpleUrlNotifier.of(context).notify();
-        return null;
+        return SynchronousFuture(null);
       }
     }
 
@@ -84,20 +84,20 @@ class MyUrlHandler extends StatelessWidget {
 
       // If the user is not authenticated and wants to go to the login, check for redirection data
       Provider.of<AppState>(context, listen: false).redirectedFrom = redirectedFrom;
-      return null;
+      return SynchronousFuture(null);
     } else if (uri.pathSegments[0] == 'profile') {
       // If the user is authenticated and wants to go to the profile, set redirection to profile
       Provider.of<AppState>(context, listen: false).redirectedFrom = InAppPages.profile;
-      return null;
+      return SynchronousFuture(null);
     } else if (uri.pathSegments[0] == 'settings') {
       // If the user is authenticated and wants to go to the settings, set redirection to settings
       Provider.of<AppState>(context, listen: false).redirectedFrom = InAppPages.settings;
-      return null;
+      return SynchronousFuture(null);
     }
 
     // No valid case was caught, update the url back to a valid one
     SimpleUrlNotifier.of(context).notify();
-    return null;
+    return SynchronousFuture(null);
   }
 
   RouteInformation appStateToUrl() {
@@ -108,7 +108,6 @@ class MyUrlHandler extends StatelessWidget {
           return RouteInformation(location: '/login#profile');
         case InAppPages.settings:
           return RouteInformation(location: '/login#settings');
-          break;
         default:
           return RouteInformation(location: '/login');
       }
