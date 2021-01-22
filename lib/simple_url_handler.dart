@@ -4,36 +4,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SimpleUrlHandler extends StatelessWidget {
-
-  SimpleUrlHandler(
-      {Key? key,
-        required this.urlToAppState,
-        required this.appStateToUrl,
-        required this.child,
-        this.scaffoldMessengerKey,
-        this.title = '',
-        this.onGenerateTitle,
-        this.color,
-        this.theme,
-        this.darkTheme,
-        this.highContrastTheme,
-        this.highContrastDarkTheme,
-        this.themeMode = ThemeMode.system,
-        this.locale,
-        this.localizationsDelegates,
-        this.localeListResolutionCallback,
-        this.localeResolutionCallback,
-        this.supportedLocales = const <Locale>[Locale('en', 'US')],
-        this.debugShowMaterialGrid = false,
-        this.showPerformanceOverlay = false,
-        this.checkerboardRasterCacheImages = false,
-        this.checkerboardOffscreenLayers = false,
-        this.showSemanticsDebugger = false,
-        this.debugShowCheckedModeBanner = true,
-        this.shortcuts,
-        this.actions,
-        this.restorationScopeId,
-      }) : super(key: key);
+  SimpleUrlHandler({
+    Key? key,
+    required this.urlToAppState,
+    required this.appStateToUrl,
+    required this.child,
+    this.scaffoldMessengerKey,
+    this.title = '',
+    this.onGenerateTitle,
+    this.color,
+    this.theme,
+    this.darkTheme,
+    this.highContrastTheme,
+    this.highContrastDarkTheme,
+    this.themeMode = ThemeMode.system,
+    this.locale,
+    this.localizationsDelegates,
+    this.localeListResolutionCallback,
+    this.localeResolutionCallback,
+    this.supportedLocales = const <Locale>[Locale('en', 'US')],
+    this.debugShowMaterialGrid = false,
+    this.showPerformanceOverlay = false,
+    this.checkerboardRasterCacheImages = false,
+    this.checkerboardOffscreenLayers = false,
+    this.showSemanticsDebugger = false,
+    this.debugShowCheckedModeBanner = true,
+    this.shortcuts,
+    this.actions,
+    this.restorationScopeId,
+  }) : super(key: key);
 
   /// This function is called whenever the url is updated either by typing the url or
   /// pressing the forward/backward button of the browser.
@@ -44,7 +43,8 @@ class SimpleUrlHandler extends StatelessWidget {
   /// Note that if your final state does not reflect the url, you should
   /// call [SimpleUrlNotifier.of(context.notify()] so that the url can be update
   /// to reflect your app final state
-  final Future<void> Function(BuildContext context, RouteInformation routeInformation) urlToAppState;
+  final Future<void> Function(
+      BuildContext context, RouteInformation routeInformation) urlToAppState;
 
   /// This function is called whenever you call [SimpleUrlNotifier.of(context.notify()].
   /// You should be able to reconstruct the RouteInformation from your app state
@@ -436,13 +436,13 @@ class SimpleUrlNotifier extends InheritedWidget {
 
   static SimpleUrlNotifier of(BuildContext context) {
     final SimpleUrlNotifier? scope =
-    context.dependOnInheritedWidgetOfExactType<SimpleUrlNotifier>();
+        context.dependOnInheritedWidgetOfExactType<SimpleUrlNotifier>();
     assert(() {
       if (scope == null) {
         throw FlutterError(
             'SimpleUrlNotifier operation requested with a context that does not include a SimpleUrlNotifier.\n'
-                'The context used to retrieve the SimpleUrlNotifier must be that of a widget that '
-                'is a descendant of a SimpleUrlHandler widget.');
+            'The context used to retrieve the SimpleUrlNotifier must be that of a widget that '
+            'is a descendant of a SimpleUrlHandler widget.');
       }
       return true;
     }());
@@ -451,15 +451,18 @@ class SimpleUrlNotifier extends InheritedWidget {
 
   void notify() {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      ((super.child as MaterialApp).routerDelegate as SimpleRouterDelegate).notify();
+      ((super.child as MaterialApp).routerDelegate as SimpleRouterDelegate)
+          .notify();
     });
   }
 }
 
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
 class SimpleRouterDelegate extends RouterDelegate<RouteInformation>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
-  final Future<void> Function(BuildContext context, RouteInformation routeInformation) urlToAppState;
+  final Future<void> Function(
+      BuildContext context, RouteInformation routeInformation) urlToAppState;
   final RouteInformation Function() appStateToUrl;
   final Widget child;
   late BuildContext context;
@@ -499,10 +502,12 @@ class SimpleRouterDelegate extends RouterDelegate<RouteInformation>
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 }
 
-class SimpleRouteInformationParser extends RouteInformationParser<RouteInformation> {
+class SimpleRouteInformationParser
+    extends RouteInformationParser<RouteInformation> {
   // Url to navigation state
   @override
-  Future<RouteInformation> parseRouteInformation(RouteInformation routeInformation) async {
+  Future<RouteInformation> parseRouteInformation(
+      RouteInformation routeInformation) async {
     return routeInformation;
   }
 
@@ -510,6 +515,5 @@ class SimpleRouteInformationParser extends RouteInformationParser<RouteInformati
   @override
   RouteInformation restoreRouteInformation(RouteInformation routeInformation) {
     return routeInformation;
-
   }
 }
