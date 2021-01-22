@@ -12,3 +12,8 @@
 
 * Formated with dartfmt
 * Updating pubspec.yaml for a description between 60 and 180 characters
+
+## 0.0.1-nullsafety.3
+
+* Adding a second, more complete, example app
+* Enabling null safety in examples
