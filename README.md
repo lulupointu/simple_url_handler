@@ -57,3 +57,8 @@ to see how simple it is.
 
 This packages only handles the url, so it should be useless for platform other than the web.
 However this should be safe to use (although useless).
+
+## Medium articles
+Two medium article explain how to make an app with this package:
+* [How to make the counter app](https://lucasdelsol01.medium.com/flutter-web-url-handling-made-simple-with-simple-url-handler-702ffbaa7a0b)
+* [How to make a more complete app](https://lucasdelsol01.medium.com/flutter-web-a-complete-example-using-simple-url-handler-517c2ced805a)
