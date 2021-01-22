@@ -16,4 +16,4 @@
 ## 0.0.1-nullsafety.3
 
 * Adding a second, more complete, example app
-* Enabling null safety in examples
+* Enabling null safety counter_app example
