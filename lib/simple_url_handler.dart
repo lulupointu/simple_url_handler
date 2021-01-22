@@ -46,7 +46,8 @@ class SimpleUrlHandler extends StatelessWidget {
   final Future<void> Function(
       BuildContext context, RouteInformation routeInformation) urlToAppState;
 
-  /// This function is called whenever you call [SimpleUrlNotifier.of(context.notify()].
+  /// This function is called when SimpleUrlHandler is built and whenever you
+  /// call [SimpleUrlNotifier.of(context.notify()].
   /// You should be able to reconstruct the RouteInformation from your app state
   final RouteInformation Function() appStateToUrl;
 
