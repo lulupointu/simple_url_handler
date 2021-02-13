@@ -23,13 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  simple_url_handler:
-    path: ../../
+  simple_url_handler: ^0.0.2
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
-  integration_test:
     sdk: flutter
 
 # For information on the generic Dart part of this file, see the

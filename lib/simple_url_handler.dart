@@ -5,11 +5,10 @@ import 'package:flutter/widgets.dart';
 
 class SimpleUrlHandler extends StatelessWidget {
   SimpleUrlHandler({
-    Key? key,
-    required this.urlToAppState,
-    required this.appStateToUrl,
-    required this.child,
-    this.scaffoldMessengerKey,
+    Key key,
+    @required this.urlToAppState,
+    @required this.appStateToUrl,
+    @required this.child,
     this.title = '',
     this.onGenerateTitle,
     this.color,
@@ -54,14 +53,6 @@ class SimpleUrlHandler extends StatelessWidget {
   /// Your child widget, built under the UrlHandler Widget
   final Widget child;
 
-  /// A key to use when building the [ScaffoldMessenger].
-  ///
-  /// If a [scaffoldMessengerKey] is specified, the [ScaffoldMessenger] can be
-  /// directly manipulated without first obtaining it from a [BuildContext] via
-  /// [ScaffoldMessenger.of]: from the [scaffoldMessengerKey], use the
-  /// [GlobalKey.currentState] getter.
-  final GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey;
-
   /// {@macro flutter.widgets.widgetsApp.title}
   ///
   /// This value is passed unmodified to [WidgetsApp.title].
@@ -70,7 +61,7 @@ class SimpleUrlHandler extends StatelessWidget {
   /// {@macro flutter.widgets.widgetsApp.onGenerateTitle}
   ///
   /// This value is passed unmodified to [WidgetsApp.onGenerateTitle].
-  final GenerateAppTitle? onGenerateTitle;
+  final GenerateAppTitle onGenerateTitle;
 
   /// Default visual properties, like colors fonts and shapes, for this app's
   /// material widgets.
@@ -89,7 +80,7 @@ class SimpleUrlHandler extends StatelessWidget {
   ///    and [darkTheme] in [MaterialApp].
   ///  * [ThemeData.brightness], which indicates the [Brightness] of a theme's
   ///    colors.
-  final ThemeData? theme;
+  final ThemeData theme;
 
   /// The [ThemeData] to use when a 'dark mode' is requested by the system.
   ///
@@ -111,7 +102,7 @@ class SimpleUrlHandler extends StatelessWidget {
   ///    and [darkTheme] in [MaterialApp].
   ///  * [ThemeData.brightness], which is typically set to the value of
   ///    [MediaQueryData.platformBrightness].
-  final ThemeData? darkTheme;
+  final ThemeData darkTheme;
 
   /// The [ThemeData] to use when 'high contrast' is requested by the system.
   ///
@@ -124,7 +115,7 @@ class SimpleUrlHandler extends StatelessWidget {
   ///
   ///  * [MediaQueryData.highContrast], which indicates the platform's
   ///    desire to increase contrast.
-  final ThemeData? highContrastTheme;
+  final ThemeData highContrastTheme;
 
   /// The [ThemeData] to use when a 'dark mode' and 'high contrast' is requested
   /// by the system.
@@ -140,7 +131,7 @@ class SimpleUrlHandler extends StatelessWidget {
   ///
   ///  * [MediaQueryData.highContrast], which indicates the platform's
   ///    desire to increase contrast.
-  final ThemeData? highContrastDarkTheme;
+  final ThemeData highContrastDarkTheme;
 
   /// Determines which theme will be used by the application if both [theme]
   /// and [darkTheme] are provided.
@@ -166,13 +157,13 @@ class SimpleUrlHandler extends StatelessWidget {
   ///  * [darkTheme], which is used when a dark mode is selected.
   ///  * [ThemeData.brightness], which indicates to various parts of the
   ///    system what kind of theme is being used.
-  final ThemeMode? themeMode;
+  final ThemeMode themeMode;
 
   /// {@macro flutter.widgets.widgetsApp.color}
-  final Color? color;
+  final Color color;
 
   /// {@macro flutter.widgets.widgetsApp.locale}
-  final Locale? locale;
+  final Locale locale;
 
   /// {@macro flutter.widgets.widgetsApp.localizationsDelegates}
   ///
@@ -265,17 +256,17 @@ class SimpleUrlHandler extends StatelessWidget {
   ///    which provides material localizations for many languages.
   ///  * The Flutter Internationalization Tutorial,
   ///    <https://flutter.dev/tutorials/internationalization/>.
-  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
 
   /// {@macro flutter.widgets.widgetsApp.localeListResolutionCallback}
   ///
   /// This callback is passed along to the [WidgetsApp] built by this widget.
-  final LocaleListResolutionCallback? localeListResolutionCallback;
+  final LocaleListResolutionCallback localeListResolutionCallback;
 
   /// {@macro flutter.widgets.LocaleResolutionCallback}
   ///
   /// This callback is passed along to the [WidgetsApp] built by this widget.
-  final LocaleResolutionCallback? localeResolutionCallback;
+  final LocaleResolutionCallback localeResolutionCallback;
 
   /// {@macro flutter.widgets.widgetsApp.supportedLocales}
   ///
@@ -337,7 +328,7 @@ class SimpleUrlHandler extends StatelessWidget {
   /// ```
   /// {@end-tool}
   /// {@macro flutter.widgets.widgetsApp.shortcuts.seeAlso}
-  final Map<LogicalKeySet, Intent>? shortcuts;
+  final Map<LogicalKeySet, Intent> shortcuts;
 
   /// {@macro flutter.widgets.widgetsApp.actions}
   /// {@tool snippet}
@@ -370,10 +361,10 @@ class SimpleUrlHandler extends StatelessWidget {
   /// ```
   /// {@end-tool}
   /// {@macro flutter.widgets.widgetsApp.actions.seeAlso}
-  final Map<Type, Action<Intent>>? actions;
+  final Map<Type, Action<Intent>> actions;
 
   /// {@macro flutter.widgets.widgetsApp.restorationScopeId}
-  final String? restorationScopeId;
+  final String restorationScopeId;
 
   /// Turns on a [GridPaper] overlay that paints a baseline grid
   /// Material apps.
@@ -397,7 +388,6 @@ class SimpleUrlHandler extends StatelessWidget {
         routeInformationParser: SimpleRouteInformationParser(),
         // routeInformationProvider: PlatformRouteInformationProvider(initialRouteInformation: RouteInformation(location: '/')),
 
-        scaffoldMessengerKey: scaffoldMessengerKey,
         title: title,
         onGenerateTitle: onGenerateTitle,
         color: color,
@@ -419,7 +409,6 @@ class SimpleUrlHandler extends StatelessWidget {
         debugShowCheckedModeBanner: debugShowCheckedModeBanner,
         shortcuts: shortcuts,
         actions: actions,
-        restorationScopeId: restorationScopeId,
       ),
     );
   }
@@ -429,14 +418,14 @@ class SimpleUrlNotifier extends InheritedWidget {
   final MaterialApp child;
 
   SimpleUrlNotifier({
-    required this.child,
+    @required this.child,
   }) : super(child: child);
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;
 
   static SimpleUrlNotifier of(BuildContext context) {
-    final SimpleUrlNotifier? scope =
+    final SimpleUrlNotifier scope =
         context.dependOnInheritedWidgetOfExactType<SimpleUrlNotifier>();
     assert(() {
       if (scope == null) {
@@ -447,7 +436,7 @@ class SimpleUrlNotifier extends InheritedWidget {
       }
       return true;
     }());
-    return scope!;
+    return scope;
   }
 
   void notify() {
@@ -466,12 +455,12 @@ class SimpleRouterDelegate extends RouterDelegate<RouteInformation>
       BuildContext context, RouteInformation routeInformation) urlToAppState;
   final RouteInformation Function() appStateToUrl;
   final Widget child;
-  late BuildContext context;
+  BuildContext context;
 
   SimpleRouterDelegate({
-    required this.urlToAppState,
-    required this.appStateToUrl,
-    required this.child,
+    @required this.urlToAppState,
+    @required this.appStateToUrl,
+    @required this.child,
   });
 
   void notify() {
@@ -509,6 +498,7 @@ class SimpleRouteInformationParser
   @override
   Future<RouteInformation> parseRouteInformation(
       RouteInformation routeInformation) async {
+    print('URL TO APP STATE');
     return routeInformation;
   }
 

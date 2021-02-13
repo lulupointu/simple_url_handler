@@ -10,7 +10,7 @@ void main() {
     ChangeNotifierProvider(
       create: (_) => AppState(),
       builder: (context, _) {
-        return MyUrlHandler(context: context,);
+        return MyUrlHandler(context: context);
       },
     ),
   );

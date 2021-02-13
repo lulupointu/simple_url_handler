@@ -24,3 +24,7 @@
 ## 0.0.1-nullsafety.5
 
 * Changing folder names examples -> example to allow pub.dev to recognize example app
+
+## 0.0.2
+
+* Bumped version to remove nullsafety

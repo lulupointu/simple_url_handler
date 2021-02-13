@@ -23,14 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^5.0.0-nullsafety.3
+  provider: ^4.3.3
   move_to_background: ^1.0.1
-  simple_url_handler: ^0.0.1-nullsafety.2
+  simple_url_handler: ^0.0.2
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
-  integration_test:
     sdk: flutter
 
 

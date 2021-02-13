@@ -253,10 +253,10 @@ packages:
   simple_url_handler:
     dependency: "direct main"
     description:
-      path: "../.."
+      path: ".."
       relative: true
     source: path
-    version: "0.0.1-nullsafety.3"
+    version: "0.0.1-nullsafety.5"
   sky_engine:
     dependency: transitive
     description: flutter
