@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   simple_url_handler:
-    path: ../../
+    path: ../
 
 dev_dependencies:
   flutter_test:

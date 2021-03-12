@@ -1,10 +1,10 @@
 name: simple_url_handler
 description: A Flutter package to help you handle the url easily on the web.
-version: 0.0.1-nullsafety.5
+version: 1.0.0
 homepage: https://github.com/lulupointu/simple_url_handler
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

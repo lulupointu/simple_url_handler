@@ -49,7 +49,7 @@ class SimpleUrlHandler extends StatelessWidget {
   /// This function is called when SimpleUrlHandler is built and whenever you
   /// call [SimpleUrlNotifier.of(context.notify()].
   /// You should be able to reconstruct the RouteInformation from your app state
-  final RouteInformation Function() appStateToUrl;
+  final RouteInformation? Function() appStateToUrl;
 
   /// Your child widget, built under the UrlHandler Widget
   final Widget child;
@@ -464,7 +464,7 @@ class SimpleRouterDelegate extends RouterDelegate<RouteInformation>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   final Future<void> Function(
       BuildContext context, RouteInformation routeInformation) urlToAppState;
-  final RouteInformation Function() appStateToUrl;
+  final RouteInformation? Function() appStateToUrl;
   final Widget child;
   late BuildContext context;
 
@@ -497,7 +497,7 @@ class SimpleRouterDelegate extends RouterDelegate<RouteInformation>
 
   // App state to navigation state
   @override
-  RouteInformation get currentConfiguration => appStateToUrl();
+  RouteInformation? get currentConfiguration => appStateToUrl();
 
   @override
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
@@ -514,7 +514,7 @@ class SimpleRouteInformationParser
 
   // Navigation state to url
   @override
-  RouteInformation restoreRouteInformation(RouteInformation routeInformation) {
+  RouteInformation? restoreRouteInformation(RouteInformation? routeInformation) {
     return routeInformation;
   }
 }
